@@ -9,6 +9,10 @@ class SessionsController < ApplicationController
       if user.activated?
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        # Increment sign in count
+        user.update_sign_in_count
+        # Notification for first login
+        flash[:info] = '初回ログインありがとうございます。' if user.is_first_sign_in?
         redirect_back_or user
       else
         message  = "Account not activated. "

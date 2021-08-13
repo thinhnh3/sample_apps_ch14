@@ -101,6 +101,16 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # Update sign_in_count
+  def update_sign_in_count
+    increment! :sign_in_count
+  end
+
+  # Check first sign in
+  def is_first_sign_in?
+    return sign_in_count <= 1
+  end
+
   private
 
     # メールアドレスをすべて小文字にする
