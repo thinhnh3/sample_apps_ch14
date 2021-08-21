@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+ruby '3.0.0'
+
 # gem 'rails',                   '6.0.3'
 gem 'rails', '~> 6.1', '>= 6.1.4'
 gem 'aws-sdk-s3',              '1.46.0', require: false
@@ -8,7 +10,8 @@ gem 'image_processing',           '1.9.3'
 gem 'mini_magick',                '4.9.5'
 gem 'active_storage_validations', '0.8.2'
 gem 'bcrypt',                  '3.1.13'
-gem 'faker',                   '2.1.2'
+# gem 'faker',                   '2.1.2'
+gem 'faker', '~> 2.18'
 gem 'will_paginate',           '3.1.8'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.4.1'
@@ -23,7 +26,10 @@ gem 'bootsnap',   '1.4.5', require: false
 group :development, :test do
   # gem 'sqlite3', '1.4.1'
   gem 'sqlite3', '~> 1.4', '>= 1.4.2'
-  gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
+  # gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry-byebug', '~> 3.9'
+  gem 'pry-rails', '~> 0.3.9'
 end
 
 group :development do
@@ -39,15 +45,19 @@ group :test do
   gem 'capybara', '~> 3.35', '>= 3.35.3'
   # gem 'selenium-webdriver',       '3.142.4'
   gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
-  gem 'webdrivers',               '4.1.2'
-  gem 'rails-controller-testing', '1.0.4'
+  # gem 'webdrivers',               '4.1.2'
+  gem 'webdrivers', '~> 4.6', '>= 4.6.1'
+  # gem 'rails-controller-testing', '1.0.4'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   # gem 'minitest',                 '5.11.3'
   gem 'minitest', '~> 5.14', '>= 5.14.4'
   # gem 'minitest-reporters',       '1.3.8'
   gem 'minitest-reporters', '~> 1.4', '>= 1.4.3'
   # gem 'guard',                    '2.16.2'
   gem 'guard', '~> 2.18'
-  gem 'guard-minitest',           '2.4.6'
+  # gem 'guard-minitest',           '2.4.6'
+  gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
+  gem 'rexml', '~> 3.2', '>= 3.2.5'
 end
 
 group :production do
