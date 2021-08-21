@@ -105,4 +105,11 @@ class UserTest < ActiveSupport::TestCase
       assert_not michael.feed.include?(post_unfollowed)
     end
   end
+
+  test "should user login" do
+    michael = users(:michael)
+    michael.update_sign_in_count
+    assert_equal michael.sign_in_count, 1
+    assert_equal michael.is_first_sign_in?, true
+  end
 end
